@@ -60,6 +60,9 @@ class DCATController(BaseController):
             'modified_since': toolkit.request.params.get('modified_since'),
             'format': _format,
             'profiles': _profiles,
+            'q': toolkit.request.params.get('q'),
+            'fq': toolkit.request.params.get('fq'),
+            'organization': toolkit.request.params.get('organization'),
         }
 
         toolkit.response.headers.update(
@@ -114,6 +117,3 @@ class DCATController(BaseController):
         toolkit.response.headers['Content-Length'] = len(content)
 
         return content
-
-
-

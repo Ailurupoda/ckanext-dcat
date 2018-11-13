@@ -99,6 +99,7 @@ def _search_ckan_datasets(context, data_dict):
             raise toolkit.ValidationError(
                 'Wrong modified date format. Use ISO-8601 format')
 
+    organization = data_dict.get('organization')
     search_data_dict = {
         'rows': n,
         'start': n * (page - 1),
@@ -116,6 +117,10 @@ def _search_ckan_datasets(context, data_dict):
     if modified_since:
         search_data_dict['fq_list'].append(
             'metadata_modified:[{0} TO NOW]'.format(modified_since))
+
+    if organization:
+        search_data_dict['fq_list'].append(
+            'organization:{0}'.format(organization))
 
     query = toolkit.get_action('package_search')(context, search_data_dict)
 
