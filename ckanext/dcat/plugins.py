@@ -120,8 +120,8 @@ class DCATPlugin(p.SingletonPlugin, DefaultTranslation):
                         object_dict[field_labels[key]] = object_dict[key]
                         del object_dict[key]
 
-            for resource in data_dict.get('resources', []):
-                set_titles(resource)
+            #for resource in data_dict.get('resources', []):
+            #    set_titles(resource)
 
             for extra in data_dict.get('extras', []):
                 if extra['key'] in field_labels:
